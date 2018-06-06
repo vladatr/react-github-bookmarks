@@ -1,9 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+
+import SearchAndResult from './search';
+
 export default class Home extends React.PureComponent {
   render () {
     return (
       <Wrapper>
+        <SearchAndResult />
         <Message>
           Happy Coding!
           <Icon dangerouslySetInnerHTML={{ __html: require('../../../../assets/cool.svg') }} />

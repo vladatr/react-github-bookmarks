@@ -1,0 +1,28 @@
+.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .listItem {
+    background-color: white;
+  }
+
+  .Title, .Icon {
+      float: left;
+  }
+
+  .Title {
+      font-weight: bold;
+      color: blue;
+  }
+
+  .flex-widgets {
+    display: flex;
+    justify-content: flex-start;
+  }

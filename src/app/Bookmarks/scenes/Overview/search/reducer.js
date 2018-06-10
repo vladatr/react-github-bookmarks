@@ -5,6 +5,9 @@ export default function searchReducer(state=[], action) {
         debugger
          return action.payload //always new
 
+         case 'EMPTY_REPOS':
+            return [];
+           
         default:
             return state
     }

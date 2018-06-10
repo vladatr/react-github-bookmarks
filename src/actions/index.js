@@ -13,3 +13,21 @@ export function getRepos(searchString) {
             
     }
 }
+
+export function emptyRepos() {
+    return function(dispatch) {
+        dispatch({type: "EMPTY_REPOS"});
+    }
+}
+
+export function addGroup(name) {
+    return function(dispatch) {
+        dispatch({type: "ADD_GROUP", group: name});
+    }
+}
+
+export function addRepoToGroup(name, repo) {
+    return function(dispatch) {
+        dispatch({type: "ADD_REPO_TO_GROUP", group: name, repo});
+    }
+}

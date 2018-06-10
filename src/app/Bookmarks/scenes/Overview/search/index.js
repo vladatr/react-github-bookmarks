@@ -20,8 +20,14 @@ class SearchAndResult extends React.Component {
             const qrepo =  e.target.value
             theTimer = setTimeout(() => {
                 console.log("Search ", qrepo)
-                this.props.dispatch(actions.getRepos(qrepo))
-            }, 500);
+                debugger
+                if(qrepo.length>0) {
+                    this.props.dispatch(actions.getRepos(qrepo))
+                } else {
+                    this.props.dispatch(actions.emptyRepos())
+                }
+                
+            }, 300);
    console.log(theTimer)
         
     }
@@ -29,8 +35,8 @@ class SearchAndResult extends React.Component {
     render() {
         return (
         <div>
-            <Search onChangeHandler={this.onChangeHandler} />
-            {this.props.items && <ItemsList items={this.props.items} /> }
+            <Search onChangeHandler={this.onChangeHandler} items={this.props.items }/>
+            
         </div>
         )
     }
@@ -40,10 +46,10 @@ class SearchAndResult extends React.Component {
 
 const Search = (props) => {
     return (
-        <div>
+        <div className="top">
             <span class="lupa">Q</span>
             <input type="text" size="50" placeholder="Search string..." onChange={props.onChangeHandler} />
-            
+            {props.items && <ItemsList items={props.items} /> }
         </div>
     )
 }

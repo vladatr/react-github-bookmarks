@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 
 export default function ItemsList(props) {
-debugger
     return(
     <div>
             { props.items && props.items.length>0 && props.items.map(item => <Item item={item} /> ) }
@@ -12,14 +11,21 @@ debugger
 }
 
 const Item = ({item}) => <Wrapper> 
-    {item.full_name}
+        <div className="Title">{item.full_name}
+        
+        </div>
+        <div className="Icon" >
+            {false && <span onClick={onAddClickHandler}>+</span> }
+        </div>
     </Wrapper>
 
 
 const Wrapper = styled.div`
 display: block;
+background-color: white;
 cursor: pointer;
-height: 40px;
+height: 60px;
+width: 30%;;
 padding: 10px;
 align-items: center;
 justify-content: center;

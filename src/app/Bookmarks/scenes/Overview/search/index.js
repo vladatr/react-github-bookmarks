@@ -10,6 +10,12 @@ class SearchAndResult extends React.Component {
     constructor(props) {
         super(props)
         this.onChangeHandler = this.onChangeHandler.bind(this)
+        this.onAddClickHandler = this.onAddClickHandler.bind(this)
+    }
+
+    onAddClickHandler(repo) {
+        this.props.dispatch(actions.addRepoToGroup('react', repo))
+        this.props.dispatch(actions.emptyRepos())
     }
 
     onChangeHandler(e) {
@@ -35,7 +41,10 @@ class SearchAndResult extends React.Component {
     render() {
         return (
         <div>
-            <Search onChangeHandler={this.onChangeHandler} items={this.props.items }/>
+            <Search onChangeHandler={this.onChangeHandler} 
+                    items={this.props.items }
+                    onAddClickHandler={this.onAddClickHandler}
+                    />
             
         </div>
         )
@@ -49,7 +58,7 @@ const Search = (props) => {
         <div className="top">
             <span class="lupa">Q</span>
             <input type="text" size="50" placeholder="Search string..." onChange={props.onChangeHandler} />
-            {props.items && <ItemsList items={props.items} /> }
+            {props.items && <ItemsList items={props.items} onAddClickHandler={props.onAddClickHandler} /> }
         </div>
     )
 }

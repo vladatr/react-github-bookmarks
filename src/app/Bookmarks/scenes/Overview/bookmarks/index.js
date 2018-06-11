@@ -17,6 +17,7 @@ class Bookmarks extends React.Component {
     }
 
     render() {
+        debugger
         return (
             <div className="flex-widgets">
                 <Widgets bookmarks={this.props.bookmarks}  />

@@ -5,17 +5,18 @@ import styled from 'styled-components'
 export default function ItemsList(props) {
     return(
     <div>
-            { props.items && props.items.length>0 && props.items.map(item => <Item item={item} /> ) }
+            { props.items && props.items.length>0 
+                && props.items.map(item => <Item item={item} onAddClickHandler={props.onAddClickHandler} /> ) }
         </div>
     )
 }
 
-const Item = ({item}) => <Wrapper> 
+const Item = ({item, onAddClickHandler}) => <Wrapper> 
         <div className="Title">{item.full_name}
         
         </div>
         <div className="Icon" >
-            {false && <span onClick={onAddClickHandler}>+</span> }
+            { <span onClick={() => onAddClickHandler(item.full_name) }>+</span> }
         </div>
     </Wrapper>
 
@@ -23,7 +24,6 @@ const Item = ({item}) => <Wrapper>
 const Wrapper = styled.div`
 display: block;
 background-color: white;
-cursor: pointer;
 height: 60px;
 width: 30%;;
 padding: 10px;

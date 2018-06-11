@@ -38,7 +38,7 @@ const Background = styled.div`
 position: absolute;
 top: 50px;
 left 0px;
-z-index:0;
+z-index:-100;
 opacity: 0.2;
 margin: 0 auto;
 `

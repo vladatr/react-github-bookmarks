@@ -14,7 +14,7 @@ class SearchAndResult extends React.Component {
     }
 
     onAddClickHandler(repo) {
-        this.props.dispatch(actions.addRepoToGroup('react', repo))
+        this.props.dispatch(actions.addRepoToGroup(this.props.activeGroup, repo))
         this.props.dispatch(actions.emptyRepos())
     }
 
@@ -67,7 +67,8 @@ const Search = (props) => {
 
 const mapStateToProps = (state) =>  {
     return {
-        items: state.get('results')
+        items: state.get('results'),
+        activeGroup: state.get('bookmarks').activeGroup
     }
 }
 

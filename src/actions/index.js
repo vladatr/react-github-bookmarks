@@ -26,6 +26,12 @@ export function addGroup(name) {
     }
 }
 
+export function setActiveGroup(name) {
+    return function(dispatch) {
+        dispatch({type: "SET_ACTIVE_GROUP", group: name});
+    }
+}
+
 export function addRepoToGroup(name, repo) {
     return function(dispatch) {
         dispatch({type: "ADD_REPO_TO_GROUP", group: name, repo});

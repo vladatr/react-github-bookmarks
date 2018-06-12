@@ -17,13 +17,24 @@
       float: left;
   }
 
+  .box {
+      float: left;
+  }
+
   .Title {
       font-weight: bold;
       color: blue;
+      border-bottom: 1px solid silver;
   }
 
   .flex-widgets {
     display: flex;
     justify-content: flex-start;
     align-content: space-between;
+  }
+
+  .iconPlus {
+      cursor: pointer;
+      font-size: 1.2em;
+      font-weight: bold;
   }

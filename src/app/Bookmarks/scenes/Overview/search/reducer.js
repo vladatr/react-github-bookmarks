@@ -1,12 +1,16 @@
-export default function searchReducer(state=[], action) {
+export default function searchReducer(state={
+    items: [],
+    show: true
+}, action) {
     switch(action.type) {
         case 'RESULTS_FETCHED':
         console.log("reduces RESULTS_FETCHED")
         debugger
-         return action.payload //always new
+         return Object.assign({items: action.payload, show: true})
 
-         case 'EMPTY_REPOS':
-            return [];
+         case 'TOGGLE_REPOS':
+         debugger
+            return Object.assign({}, {items: state.items, show: action.show });
            
         default:
             return state

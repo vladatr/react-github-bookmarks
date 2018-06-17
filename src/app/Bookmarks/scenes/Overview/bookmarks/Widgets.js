@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Item from '../Item'
+
 class Widgets extends React.Component {
 
     render() {
@@ -13,7 +15,7 @@ class Widgets extends React.Component {
                   return (
                     
                    <Widget group={group} setActiveGroup={this.props.setActiveGroup}
-                    reposByGroup={list}/>
+                    reposByGroup={list} removeGroup={this.props.removeGroup} removeRepo={this.props.removeRepo} />
                    )
                     }
               )} 
@@ -22,16 +24,16 @@ class Widgets extends React.Component {
     }
 }
 
-const Widget = ({group, reposByGroup, setActiveGroup}) => {
+const Widget = ({group, reposByGroup, setActiveGroup, removeGroup, removeRepo}) => {
     debugger
     return (
         <Wrapper> 
-        <h2 style={{borderBottom: "1px solid silver"}}>
-            <span onClick={() => setActiveGroup(group)}>{group}</span>
-            <X>X</X>
-        </h2>
+            <X onClick={() => removeGroup(group)}> X </X>
+
+            <div onClick={() => setActiveGroup(group)}>{group}</div>
+  
         
-        {reposByGroup.length>0 && reposByGroup.map(repo => <div>{repo.name}</div>)}
+        {reposByGroup.length>0 && reposByGroup.map(group => <Item item={group.repo} removeRepo={removeRepo} />)}
     </Wrapper>
 
     )
@@ -43,7 +45,7 @@ display: block;
 float:left;
 background-color: white;
 cursor: pointer;
-width: 200px;
+width: 330px;
 margin: 15px;
 padding: 10px;
 align-items: center;

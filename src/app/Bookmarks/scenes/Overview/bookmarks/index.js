@@ -10,10 +10,25 @@ class Bookmarks extends React.Component {
         super(props)
         this.addGroup = this.addGroup.bind(this)
         this.setActiveGroup = this.setActiveGroup.bind(this)
+        this.removeGroup = this.removeGroup.bind(this)
+        this.removeRepo = this.removeRepo.bind(this)
     }
 
     addGroup = (name) => {
-        this.props.dispatch(actions.addGroup(name))
+        if(name.trim() == "") {
+            this.props.dispatch(actions.setError("Enter group name."))
+        } else {
+            this.props.dispatch(actions.addGroup(name))
+        }
+        
+    }
+
+    removeGroup = (name) => {
+        this.props.dispatch(actions.removeGroup(name))     
+    }
+
+    removeRepo = (item) => {
+        this.props.dispatch(actions.removeRepo(item))     
     }
 
     setActiveGroup = (name) => {
@@ -26,7 +41,10 @@ class Bookmarks extends React.Component {
         <div>
             <div>{this.props.bookmarks.err}</div>
             <div className="flex-widgets">
-                <Widgets bookmarks={this.props.bookmarks} setActiveGroup={this.setActiveGroup} />
+                <Widgets bookmarks={this.props.bookmarks} 
+                         setActiveGroup={this.setActiveGroup}
+                         removeGroup={this.removeGroup}
+                         removeRepo={this.removeRepo} />
                 <EmptyWidget addGroup={this.addGroup} />
             </div>
         </div>

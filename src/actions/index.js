@@ -14,15 +14,33 @@ export function getRepos(searchString) {
     }
 }
 
-export function emptyRepos() {
+export function hideRepos() {
     return function(dispatch) {
-        dispatch({type: "EMPTY_REPOS"});
+        dispatch({type: "TOGGLE_REPOS", show: false});
+    }
+}
+
+export function showRepos() {
+    return function(dispatch) {
+        dispatch({type: "TOGGLE_REPOS", show: true});
     }
 }
 
 export function addGroup(name) {
     return function(dispatch) {
         dispatch({type: "ADD_GROUP", group: name});
+    }
+}
+
+export function removeGroup(name) {
+    return function(dispatch) {
+        dispatch({type: "REMOVE_GROUP", group: name});
+    }
+}
+
+export function removeRepo(item) {
+    return function(dispatch) {
+        dispatch({type: "REMOVE_REPO", repo: item});
     }
 }
 
@@ -36,4 +54,10 @@ export function addRepoToGroup(name, repo) {
     return function(dispatch) {
         dispatch({type: "ADD_REPO_TO_GROUP", group: name, repo});
     }
+}
+
+export function setError(err) {
+    return function(dispatch) {
+        dispatch({type: "SET_ERROR", err});
+    } 
 }

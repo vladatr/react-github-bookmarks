@@ -50,6 +50,18 @@ module.exports = (environment) => {
           ]
         },
         {
+          test: /\.png$/,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 3000,
+                name: '[name].[ext]'
+              }
+            }
+          ]
+        },
+        {
           exclude: [
             /\.html$/,
             /\.(js|jsx)$/,
@@ -61,8 +73,8 @@ module.exports = (environment) => {
             {
               loader: 'url-loader',
               options: {
-                limit: 10000,
-                name: 'static/media/[name].[hash:8].[ext]'
+                limit: 100,
+                name: 'static/media/[name].[ext]'
               }
             }
           ]
@@ -94,9 +106,11 @@ module.exports = (environment) => {
 
   switch (environment) {
     case 'development':
+    /*
       config.plugins.push(new BundleAnalyzerPlugin({
         openAnalyzer: false // open on :8888
       }))
+      */
       break
     case 'production':
       break

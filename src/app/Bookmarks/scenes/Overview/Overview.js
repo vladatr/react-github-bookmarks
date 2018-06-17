@@ -5,7 +5,10 @@ import SearchAndResult from './search';
 import Bookmarks from './bookmarks';
 
 export default class Home extends React.PureComponent {
+
+
   render () {
+    debugger
     return (
       <Wrapper>
         <SearchAndResult />

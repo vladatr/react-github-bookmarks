@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 class EmptyWidget extends React.Component {
     constructor(props) {
@@ -20,14 +21,22 @@ class EmptyWidget extends React.Component {
 
     render() {
         return(
-            <div>
+            <Wrapper>
                 <input placeholder="Enter name" onChange={this.nameChange} value={this.state.name} /> 
-                <span className="iconPlus" onClick={() => this.addGroup(this.state.name)} > + </span>
-            </div>
+                <span className="iconPlus" onClick={() => this.addGroup(this.state.name)} > 
+                <img src="static/media/add.png" width="24px" />
+                 </span>
+            </Wrapper>
         )
     }
 
 }
 
+const Wrapper = styled.div`
+border: 1px silver dashed;
+padding: 10px;
+margin: 15px;
+height: 50px;
+`
 
 export default EmptyWidget;
